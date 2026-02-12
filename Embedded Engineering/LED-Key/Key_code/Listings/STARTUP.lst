@@ -1,0 +1,513 @@
+A51 MACRO ASSEMBLER  STARTUP                                                              02/12/2026 21:54:47 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: D:\Keil_v5\C51\BIN\A51.EXE STARTUP.A51 SET(SMALL) DEBUG PRINT(.\Listings\STARTUP.lst) OBJECT(.\Obj
+                      ects\STARTUP.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;#include "reg52.h"
+                +1     2     
+                +1     3     
+                +1     4     
+                +1     5     
+                +1     6     
+                +1     7     
+                +1     8     
+                +1     9     
+                +1    10     
+                +1    11     
+                +1    12     
+                +1    13     
+  0080          +1    14     sfr P0    = 0x80;
+*** _____________________________^
+*** ERROR #A10 IN 14 (D:\KEIL_V5\C51\INC\REG52.H, LINE 13): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0090          +1    15     sfr P1    = 0x90;
+*** _____________________________^
+*** ERROR #A10 IN 15 (D:\KEIL_V5\C51\INC\REG52.H, LINE 14): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00A0          +1    16     sfr P2    = 0xA0;
+*** _____________________________^
+*** ERROR #A10 IN 16 (D:\KEIL_V5\C51\INC\REG52.H, LINE 15): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B0          +1    17     sfr P3    = 0xB0;
+*** _____________________________^
+*** ERROR #A10 IN 17 (D:\KEIL_V5\C51\INC\REG52.H, LINE 16): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00D0          +1    18     sfr PSW   = 0xD0;
+*** _____________________________^
+*** ERROR #A10 IN 18 (D:\KEIL_V5\C51\INC\REG52.H, LINE 17): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00E0          +1    19     sfr ACC   = 0xE0;
+*** _____________________________^
+*** ERROR #A10 IN 19 (D:\KEIL_V5\C51\INC\REG52.H, LINE 18): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00F0          +1    20     sfr B     = 0xF0;
+*** _____________________________^
+*** ERROR #A10 IN 20 (D:\KEIL_V5\C51\INC\REG52.H, LINE 19): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0081          +1    21     sfr SP    = 0x81;
+*** _____________________________^
+*** ERROR #A10 IN 21 (D:\KEIL_V5\C51\INC\REG52.H, LINE 20): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0082          +1    22     sfr DPL   = 0x82;
+*** _____________________________^
+*** ERROR #A10 IN 22 (D:\KEIL_V5\C51\INC\REG52.H, LINE 21): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0083          +1    23     sfr DPH   = 0x83;
+*** _____________________________^
+*** ERROR #A10 IN 23 (D:\KEIL_V5\C51\INC\REG52.H, LINE 22): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0087          +1    24     sfr PCON  = 0x87;
+*** _____________________________^
+*** ERROR #A10 IN 24 (D:\KEIL_V5\C51\INC\REG52.H, LINE 23): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0088          +1    25     sfr TCON  = 0x88;
+*** _____________________________^
+*** ERROR #A10 IN 25 (D:\KEIL_V5\C51\INC\REG52.H, LINE 24): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0089          +1    26     sfr TMOD  = 0x89;
+*** _____________________________^
+*** ERROR #A10 IN 26 (D:\KEIL_V5\C51\INC\REG52.H, LINE 25): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  008A          +1    27     sfr TL0   = 0x8A;
+*** _____________________________^
+*** ERROR #A10 IN 27 (D:\KEIL_V5\C51\INC\REG52.H, LINE 26): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  008B          +1    28     sfr TL1   = 0x8B;
+*** _____________________________^
+A51 MACRO ASSEMBLER  STARTUP                                                              02/12/2026 21:54:47 PAGE     2
+
+*** ERROR #A10 IN 28 (D:\KEIL_V5\C51\INC\REG52.H, LINE 27): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  008C          +1    29     sfr TH0   = 0x8C;
+*** _____________________________^
+*** ERROR #A10 IN 29 (D:\KEIL_V5\C51\INC\REG52.H, LINE 28): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  008D          +1    30     sfr TH1   = 0x8D;
+*** _____________________________^
+*** ERROR #A10 IN 30 (D:\KEIL_V5\C51\INC\REG52.H, LINE 29): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00A8          +1    31     sfr IE    = 0xA8;
+*** _____________________________^
+*** ERROR #A10 IN 31 (D:\KEIL_V5\C51\INC\REG52.H, LINE 30): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B8          +1    32     sfr IP    = 0xB8;
+*** _____________________________^
+*** ERROR #A10 IN 32 (D:\KEIL_V5\C51\INC\REG52.H, LINE 31): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0098          +1    33     sfr SCON  = 0x98;
+*** _____________________________^
+*** ERROR #A10 IN 33 (D:\KEIL_V5\C51\INC\REG52.H, LINE 32): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0099          +1    34     sfr SBUF  = 0x99;
+*** _____________________________^
+*** ERROR #A10 IN 34 (D:\KEIL_V5\C51\INC\REG52.H, LINE 33): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+                +1    35     
+                +1    36     
+  00C8          +1    37     sfr T2CON  = 0xC8;
+  00CA          +1    38     sfr RCAP2L = 0xCA;
+  00CB          +1    39     sfr RCAP2H = 0xCB;
+  00CC          +1    40     sfr TL2    = 0xCC;
+  00CD          +1    41     sfr TH2    = 0xCD;
+                +1    42     
+                +1    43     
+                +1    44     
+                +1    45     
+  00D7          +1    46     sbit CY    = PSW^7;
+*** ______________________________^
+*** ERROR #A10 IN 46 (D:\KEIL_V5\C51\INC\REG52.H, LINE 45): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00D6          +1    47     sbit AC    = PSW^6;
+*** ______________________________^
+*** ERROR #A10 IN 47 (D:\KEIL_V5\C51\INC\REG52.H, LINE 46): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00D5          +1    48     sbit F0    = PSW^5;
+*** ______________________________^
+*** ERROR #A10 IN 48 (D:\KEIL_V5\C51\INC\REG52.H, LINE 47): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00D4          +1    49     sbit RS1   = PSW^4;
+*** ______________________________^
+*** ERROR #A10 IN 49 (D:\KEIL_V5\C51\INC\REG52.H, LINE 48): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00D3          +1    50     sbit RS0   = PSW^3;
+*** ______________________________^
+*** ERROR #A10 IN 50 (D:\KEIL_V5\C51\INC\REG52.H, LINE 49): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00D2          +1    51     sbit OV    = PSW^2;
+*** ______________________________^
+*** ERROR #A10 IN 51 (D:\KEIL_V5\C51\INC\REG52.H, LINE 50): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00D0          +1    52     sbit P     = PSW^0; //8052 only
+*** ______________________________^
+*** ERROR #A10 IN 52 (D:\KEIL_V5\C51\INC\REG52.H, LINE 51): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+                +1    53     
+                +1    54     
+  008F          +1    55     sbit TF1   = TCON^7;
+*** ______________________________^
+*** ERROR #A10 IN 55 (D:\KEIL_V5\C51\INC\REG52.H, LINE 54): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  008E          +1    56     sbit TR1   = TCON^6;
+*** ______________________________^
+*** ERROR #A10 IN 56 (D:\KEIL_V5\C51\INC\REG52.H, LINE 55): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  008D          +1    57     sbit TF0   = TCON^5;
+*** ______________________________^
+*** ERROR #A10 IN 57 (D:\KEIL_V5\C51\INC\REG52.H, LINE 56): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  008C          +1    58     sbit TR0   = TCON^4;
+*** ______________________________^
+*** ERROR #A10 IN 58 (D:\KEIL_V5\C51\INC\REG52.H, LINE 57): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  008B          +1    59     sbit IE1   = TCON^3;
+A51 MACRO ASSEMBLER  STARTUP                                                              02/12/2026 21:54:47 PAGE     3
+
+*** ______________________________^
+*** ERROR #A10 IN 59 (D:\KEIL_V5\C51\INC\REG52.H, LINE 58): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  008A          +1    60     sbit IT1   = TCON^2;
+*** ______________________________^
+*** ERROR #A10 IN 60 (D:\KEIL_V5\C51\INC\REG52.H, LINE 59): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0089          +1    61     sbit IE0   = TCON^1;
+*** ______________________________^
+*** ERROR #A10 IN 61 (D:\KEIL_V5\C51\INC\REG52.H, LINE 60): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0088          +1    62     sbit IT0   = TCON^0;
+*** ______________________________^
+*** ERROR #A10 IN 62 (D:\KEIL_V5\C51\INC\REG52.H, LINE 61): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+                +1    63     
+                +1    64     
+  00AF          +1    65     sbit EA    = IE^7;
+*** ______________________________^
+*** ERROR #A10 IN 65 (D:\KEIL_V5\C51\INC\REG52.H, LINE 64): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00AD          +1    66     sbit ET2   = IE^5; //8052 only
+  00AC          +1    67     sbit ES    = IE^4;
+*** ______________________________^
+*** ERROR #A10 IN 67 (D:\KEIL_V5\C51\INC\REG52.H, LINE 66): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00AB          +1    68     sbit ET1   = IE^3;
+*** ______________________________^
+*** ERROR #A10 IN 68 (D:\KEIL_V5\C51\INC\REG52.H, LINE 67): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00AA          +1    69     sbit EX1   = IE^2;
+*** ______________________________^
+*** ERROR #A10 IN 69 (D:\KEIL_V5\C51\INC\REG52.H, LINE 68): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00A9          +1    70     sbit ET0   = IE^1;
+*** ______________________________^
+*** ERROR #A10 IN 70 (D:\KEIL_V5\C51\INC\REG52.H, LINE 69): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00A8          +1    71     sbit EX0   = IE^0;
+*** ______________________________^
+*** ERROR #A10 IN 71 (D:\KEIL_V5\C51\INC\REG52.H, LINE 70): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+                +1    72     
+                +1    73     
+  00BD          +1    74     sbit PT2   = IP^5;
+  00BC          +1    75     sbit PS    = IP^4;
+*** ______________________________^
+*** ERROR #A10 IN 75 (D:\KEIL_V5\C51\INC\REG52.H, LINE 74): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00BB          +1    76     sbit PT1   = IP^3;
+*** ______________________________^
+*** ERROR #A10 IN 76 (D:\KEIL_V5\C51\INC\REG52.H, LINE 75): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00BA          +1    77     sbit PX1   = IP^2;
+*** ______________________________^
+*** ERROR #A10 IN 77 (D:\KEIL_V5\C51\INC\REG52.H, LINE 76): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B9          +1    78     sbit PT0   = IP^1;
+*** ______________________________^
+*** ERROR #A10 IN 78 (D:\KEIL_V5\C51\INC\REG52.H, LINE 77): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B8          +1    79     sbit PX0   = IP^0;
+*** ______________________________^
+*** ERROR #A10 IN 79 (D:\KEIL_V5\C51\INC\REG52.H, LINE 78): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+                +1    80     
+                +1    81     
+  00B7          +1    82     sbit RD    = P3^7;
+*** ______________________________^
+*** ERROR #A10 IN 82 (D:\KEIL_V5\C51\INC\REG52.H, LINE 81): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B6          +1    83     sbit WR    = P3^6;
+*** ______________________________^
+*** ERROR #A10 IN 83 (D:\KEIL_V5\C51\INC\REG52.H, LINE 82): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B5          +1    84     sbit T1    = P3^5;
+*** ______________________________^
+*** ERROR #A10 IN 84 (D:\KEIL_V5\C51\INC\REG52.H, LINE 83): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B4          +1    85     sbit T0    = P3^4;
+*** ______________________________^
+*** ERROR #A10 IN 85 (D:\KEIL_V5\C51\INC\REG52.H, LINE 84): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B3          +1    86     sbit INT1  = P3^3;
+*** ______________________________^
+A51 MACRO ASSEMBLER  STARTUP                                                              02/12/2026 21:54:47 PAGE     4
+
+*** ERROR #A10 IN 86 (D:\KEIL_V5\C51\INC\REG52.H, LINE 85): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B2          +1    87     sbit INT0  = P3^2;
+*** ______________________________^
+*** ERROR #A10 IN 87 (D:\KEIL_V5\C51\INC\REG52.H, LINE 86): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B1          +1    88     sbit TXD   = P3^1;
+*** ______________________________^
+*** ERROR #A10 IN 88 (D:\KEIL_V5\C51\INC\REG52.H, LINE 87): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  00B0          +1    89     sbit RXD   = P3^0;
+*** ______________________________^
+*** ERROR #A10 IN 89 (D:\KEIL_V5\C51\INC\REG52.H, LINE 88): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+                +1    90     
+                +1    91     
+  009F          +1    92     sbit SM0   = SCON^7;
+*** ______________________________^
+*** ERROR #A10 IN 92 (D:\KEIL_V5\C51\INC\REG52.H, LINE 91): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  009E          +1    93     sbit SM1   = SCON^6;
+*** ______________________________^
+*** ERROR #A10 IN 93 (D:\KEIL_V5\C51\INC\REG52.H, LINE 92): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  009D          +1    94     sbit SM2   = SCON^5;
+*** ______________________________^
+*** ERROR #A10 IN 94 (D:\KEIL_V5\C51\INC\REG52.H, LINE 93): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  009C          +1    95     sbit REN   = SCON^4;
+*** ______________________________^
+*** ERROR #A10 IN 95 (D:\KEIL_V5\C51\INC\REG52.H, LINE 94): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  009B          +1    96     sbit TB8   = SCON^3;
+*** ______________________________^
+*** ERROR #A10 IN 96 (D:\KEIL_V5\C51\INC\REG52.H, LINE 95): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  009A          +1    97     sbit RB8   = SCON^2;
+*** ______________________________^
+*** ERROR #A10 IN 97 (D:\KEIL_V5\C51\INC\REG52.H, LINE 96): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0099          +1    98     sbit TI    = SCON^1;
+*** ______________________________^
+*** ERROR #A10 IN 98 (D:\KEIL_V5\C51\INC\REG52.H, LINE 97): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+  0098          +1    99     sbit RI    = SCON^0;
+*** ______________________________^
+*** ERROR #A10 IN 99 (D:\KEIL_V5\C51\INC\REG52.H, LINE 98): ATTEMPT TO DEFINE AN ALREADY DEFINED SYMBOL
+                +1   100     
+                +1   101     
+  0091          +1   102     sbit T2EX  = P1^1; // 8052 only
+  0090          +1   103     sbit T2    = P1^0; // 8052 only
+                +1   104                  
+                +1   105     
+  00CF          +1   106     sbit TF2    = T2CON^7;
+  00CE          +1   107     sbit EXF2   = T2CON^6;
+  00CD          +1   108     sbit RCLK   = T2CON^5;
+  00CC          +1   109     sbit TCLK   = T2CON^4;
+  00CB          +1   110     sbit EXEN2  = T2CON^3;
+  00CA          +1   111     sbit TR2    = T2CON^2;
+  00C9          +1   112     sbit C_T2   = T2CON^1;
+  00C8          +1   113     sbit CP_RL2 = T2CON^0;
+                +1   114     
+                +1   115     
+                     116     
+                     117     
+  0090               118     sbit key = P1^0;   
+  00A0               119     sbit LED0 = P2^0;
+                     120             
+                     121     void delay(unsigned int n){
+*** _________________________^
+*** ___________________________________________________^
+*** ERROR #A9 IN 121 (STARTUP.A51, LINE 6): SYNTAX ERROR
+*** ERROR #A3 IN 121 (STARTUP.A51, LINE 6): ILLEGAL CHARACTER
+                     122         unsigned int i = 0, j = 0;
+*** _____________________________^
+*** ERROR #A9 IN 122 (STARTUP.A51, LINE 7): SYNTAX ERROR
+                     123         for(i = 0; i < n; i++) {
+A51 MACRO ASSEMBLER  STARTUP                                                              02/12/2026 21:54:47 PAGE     5
+
+*** _____________________________^
+*** ERROR #A9 IN 123 (STARTUP.A51, LINE 8): SYNTAX ERROR
+                     124             for(j = 0; j < 120; j++);
+*** _________________________________^
+*** ERROR #A9 IN 124 (STARTUP.A51, LINE 9): SYNTAX ERROR
+                     125         }
+*** _____________________________^
+*** ERROR #A9 IN 125 (STARTUP.A51, LINE 10): SYNTAX ERROR
+                     126     }
+*** _________________________^
+*** ERROR #A9 IN 126 (STARTUP.A51, LINE 11): SYNTAX ERROR
+                     127     
+                     128     void deb(void){
+*** _________________________^
+*** _______________________________________^
+*** ERROR #A9 IN 128 (STARTUP.A51, LINE 13): SYNTAX ERROR
+*** ERROR #A3 IN 128 (STARTUP.A51, LINE 13): ILLEGAL CHARACTER
+                     129         delay(20); 
+*** _____________________________^
+*** ERROR #A9 IN 129 (STARTUP.A51, LINE 14): SYNTAX ERROR
+                     130     }
+*** _________________________^
+*** ERROR #A9 IN 130 (STARTUP.A51, LINE 15): SYNTAX ERROR
+                     131     
+                     132     void l_to_r(void){
+*** _________________________^
+*** __________________________________________^
+*** ERROR #A9 IN 132 (STARTUP.A51, LINE 17): SYNTAX ERROR
+*** ERROR #A3 IN 132 (STARTUP.A51, LINE 17): ILLEGAL CHARACTER
+                     133         unsigned char i;
+*** _____________________________^
+*** ERROR #A9 IN 133 (STARTUP.A51, LINE 18): SYNTAX ERROR
+                     134         for(i = 0; i < 8; i++){
+*** _____________________________^
+*** ERROR #A9 IN 134 (STARTUP.A51, LINE 19): SYNTAX ERROR
+                     135             P2 = ~(0x01 << i);  
+*** _________________________________^
+*** ERROR #A9 IN 135 (STARTUP.A51, LINE 20): SYNTAX ERROR
+                     136             delay(100);
+*** _________________________________^
+*** ERROR #A9 IN 136 (STARTUP.A51, LINE 21): SYNTAX ERROR
+                     137         }
+*** _____________________________^
+*** ERROR #A9 IN 137 (STARTUP.A51, LINE 22): SYNTAX ERROR
+                     138     }
+*** _________________________^
+*** ERROR #A9 IN 138 (STARTUP.A51, LINE 23): SYNTAX ERROR
+                     139     
+                     140     void r_to_l(void){
+*** _________________________^
+*** __________________________________________^
+*** ERROR #A9 IN 140 (STARTUP.A51, LINE 25): SYNTAX ERROR
+*** ERROR #A3 IN 140 (STARTUP.A51, LINE 25): ILLEGAL CHARACTER
+                     141         unsigned char i;
+*** _____________________________^
+*** ERROR #A9 IN 141 (STARTUP.A51, LINE 26): SYNTAX ERROR
+                     142         for(i = 0; i < 8; i++){
+*** _____________________________^
+*** ERROR #A9 IN 142 (STARTUP.A51, LINE 27): SYNTAX ERROR
+                     143             P2 = ~(0x80 >> i);   
+*** _________________________________^
+*** ERROR #A9 IN 143 (STARTUP.A51, LINE 28): SYNTAX ERROR
+                     144             delay(100);
+*** _________________________________^
+*** ERROR #A9 IN 144 (STARTUP.A51, LINE 29): SYNTAX ERROR
+                     145         }
+A51 MACRO ASSEMBLER  STARTUP                                                              02/12/2026 21:54:47 PAGE     6
+
+*** _____________________________^
+*** ERROR #A9 IN 145 (STARTUP.A51, LINE 30): SYNTAX ERROR
+                     146     }
+*** _________________________^
+*** ERROR #A9 IN 146 (STARTUP.A51, LINE 31): SYNTAX ERROR
+                     147     
+                     148     void main(){
+*** _________________________^
+*** ____________________________________^
+*** ERROR #A9 IN 148 (STARTUP.A51, LINE 33): SYNTAX ERROR
+*** ERROR #A3 IN 148 (STARTUP.A51, LINE 33): ILLEGAL CHARACTER
+                     149         bit direction = 0;     
+*** _____________________________^
+*** ERROR #A9 IN 149 (STARTUP.A51, LINE 34): SYNTAX ERROR
+                     150         bit flag = 0; 
+*** _____________________________^
+*** ERROR #A9 IN 150 (STARTUP.A51, LINE 35): SYNTAX ERROR
+                     151         
+                     152         P2 = 0xFF; 
+*** _____________________________^
+*** ERROR #A9 IN 152 (STARTUP.A51, LINE 37): SYNTAX ERROR
+                     153         
+                     154         while(1){
+*** _____________________________^
+*** _____________________________________^
+*** ERROR #A9 IN 154 (STARTUP.A51, LINE 39): SYNTAX ERROR
+*** ERROR #A3 IN 154 (STARTUP.A51, LINE 39): ILLEGAL CHARACTER
+                     155          
+                     156             if(key == 0){
+                                         deb();
+                                         if(key == 0){
+                                          
+                                             if(flag == 0){
+                                                 flag = 1;
+                                                 direction = ~direction;  
+                                             }
+                                             else{
+                                                 flag = 0;
+                                                 P2 = 0xFF; 
+                                             }
+                                             
+                                             while(key == 0);  
+                                             deb();
+                                         }
+                                     }
+                                  
+                                     if(flag == 1){
+                                         if(direction == 0){
+                                             l_to_r(); 
+                                         }
+                                         else{
+                                             r_to_l();
+                                         }
+                                     }
+                                 }
+                             }
+*** ERROR #A56 IN 183 (STARTUP.A51, LINE 68): UNBALANCED IF-ENDIF CONTROLS
+*** WARNING #A41 IN 183 (STARTUP.A51, LINE 68): MISSING 'END' STATEMENT
+A51 MACRO ASSEMBLER  STARTUP                                                              02/12/2026 21:54:47 PAGE     7
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AC . . . . . . . .  B ADDR   00D0H.6 A   
+ACC. . . . . . . .  D ADDR   00E0H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+CHAR . . . . . . .    ----   -----       
+CP_RL2 . . . . . .  B ADDR   00C8H.0 A   
+CY . . . . . . . .  B ADDR   00D0H.7 A   
+C_T2 . . . . . . .  B ADDR   00C8H.1 A   
+DEB. . . . . . . .    ----   -----       
+DELAY. . . . . . .    ----   -----       
+DIRECTION. . . . .    ----   -----       
+DPH. . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . .  D ADDR   0082H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ES . . . . . . . .  B ADDR   00A8H.4 A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+ET1. . . . . . . .  B ADDR   00A8H.3 A   
+ET2. . . . . . . .  B ADDR   00A8H.5 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+EX1. . . . . . . .  B ADDR   00A8H.2 A   
+EXEN2. . . . . . .  B ADDR   00C8H.3 A   
+EXF2 . . . . . . .  B ADDR   00C8H.6 A   
+F0 . . . . . . . .  B ADDR   00D0H.5 A   
+FLAG . . . . . . .    ----   -----       
+FOR. . . . . . . .    ----   -----       
+I. . . . . . . . .    ----   -----       
+IE . . . . . . . .  D ADDR   00A8H   A   
+IE0. . . . . . . .  B ADDR   0088H.1 A   
+IE1. . . . . . . .  B ADDR   0088H.3 A   
+INT. . . . . . . .    ----   -----       
+INT0 . . . . . . .  B ADDR   00B0H.2 A   
+INT1 . . . . . . .  B ADDR   00B0H.3 A   
+IP . . . . . . . .  D ADDR   00B8H   A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+IT1. . . . . . . .  B ADDR   0088H.2 A   
+J. . . . . . . . .    ----   -----       
+KEY. . . . . . . .  B ADDR   0090H.0 A   
+LED0 . . . . . . .  B ADDR   00A0H.0 A   
+L_TO_R . . . . . .    ----   -----       
+MAIN . . . . . . .    ----   -----       
+N. . . . . . . . .    ----   -----       
+OV . . . . . . . .  B ADDR   00D0H.2 A   
+P. . . . . . . . .  B ADDR   00D0H.0 A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+PCON . . . . . . .  D ADDR   0087H   A   
+PS . . . . . . . .  B ADDR   00B8H.4 A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+PT0. . . . . . . .  B ADDR   00B8H.1 A   
+PT1. . . . . . . .  B ADDR   00B8H.3 A   
+PT2. . . . . . . .  B ADDR   00B8H.5 A   
+PX0. . . . . . . .  B ADDR   00B8H.0 A   
+PX1. . . . . . . .  B ADDR   00B8H.2 A   
+RB8. . . . . . . .  B ADDR   0098H.2 A   
+RCAP2H . . . . . .  D ADDR   00CBH   A   
+RCAP2L . . . . . .  D ADDR   00CAH   A   
+RCLK . . . . . . .  B ADDR   00C8H.5 A   
+RD . . . . . . . .  B ADDR   00B0H.7 A   
+REN. . . . . . . .  B ADDR   0098H.4 A   
+A51 MACRO ASSEMBLER  STARTUP                                                              02/12/2026 21:54:47 PAGE     8
+
+RI . . . . . . . .  B ADDR   0098H.0 A   
+RS0. . . . . . . .  B ADDR   00D0H.3 A   
+RS1. . . . . . . .  B ADDR   00D0H.4 A   
+RXD. . . . . . . .  B ADDR   00B0H.0 A   
+R_TO_L . . . . . .    ----   -----       
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+SM0. . . . . . . .  B ADDR   0098H.7 A   
+SM1. . . . . . . .  B ADDR   0098H.6 A   
+SM2. . . . . . . .  B ADDR   0098H.5 A   
+SP . . . . . . . .  D ADDR   0081H   A   
+T0 . . . . . . . .  B ADDR   00B0H.4 A   
+T1 . . . . . . . .  B ADDR   00B0H.5 A   
+T2 . . . . . . . .  B ADDR   0090H.0 A   
+T2CON. . . . . . .  D ADDR   00C8H   A   
+T2EX . . . . . . .  B ADDR   0090H.1 A   
+TB8. . . . . . . .  B ADDR   0098H.3 A   
+TCLK . . . . . . .  B ADDR   00C8H.4 A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TF2. . . . . . . .  B ADDR   00C8H.7 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TH2. . . . . . . .  D ADDR   00CDH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TL2. . . . . . . .  D ADDR   00CCH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+TR2. . . . . . . .  B ADDR   00C8H.2 A   
+TXD. . . . . . . .  B ADDR   00B0H.1 A   
+UNSIGNED . . . . .    ----   -----       
+VOID . . . . . . .    ----   -----       
+WHILE. . . . . . .    ----   -----       
+WR . . . . . . . .  B ADDR   00B0H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  1 WARNING(S), 99 ERROR(S)
