@@ -1,0 +1,198 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    02/14/2026  17:23:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\mainpro.obj TO .\Objects\main PRINT (.\Listings\main.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\mainpro.obj (MAINPRO)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\main (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         ?DT?MAIN
+            DATA    0012H     000AH     UNIT         ?DT?MAINPRO
+            IDATA   001CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0019H     UNIT         ?PR?SEG?MAIN
+            CODE    00A8H     0019H     UNIT         ?C_INITSEG
+            CODE    00C1H     0019H     UNIT         ?PR?SEG?MAINPRO
+            CODE    00DAH     000FH     UNIT         ?PR?DELAY?MAIN
+            CODE    00E9H     000FH     UNIT         ?PR?DELAY?MAINPRO
+            CODE    00F8H     0005H     UNIT         ?PR?MAIN?MAIN
+            CODE    00FDH     0005H     UNIT         ?PR?MAIN?MAINPRO
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\main (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?SEG?MAIN
+
+?PR?SEG?MAIN
+  +--> ?PR?DELAY?MAIN
+
+
+
+IGNORED SYMBOLS:
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/14/2026  17:23:10  PAGE 2
+
+
+   DELAY
+   MAIN
+   S
+   SEG
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\main (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:00F8H         PUBLIC        main
+  C:008FH         PUBLIC        seg
+  C:00DAH         PUBLIC        Delay
+  D:0008H         PUBLIC        s
+  -------         PROC          DELAY
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  D:0005H         SYMBOL        k
+  -------         ENDDO         
+  C:00DAH         LINE#         6
+  C:00DAH         LINE#         8
+  C:00DBH         LINE#         9
+  C:00DCH         LINE#         10
+  C:00DEH         LINE#         11
+  C:00E0H         LINE#         12
+  C:00E2H         LINE#         13
+  C:00E2H         LINE#         14
+  C:00E2H         LINE#         15
+  C:00E4H         LINE#         16
+  C:00E6H         LINE#         17
+  C:00E8H         LINE#         18
+  -------         ENDPROC       DELAY
+  -------         PROC          SEG
+  -------         DO            
+  D:0002H         SYMBOL        i
+  -------         ENDDO         
+  C:008FH         LINE#         20
+  C:008FH         LINE#         22
+  C:0092H         LINE#         23
+  C:0099H         LINE#         24
+  C:009CH         LINE#         25
+  C:00A7H         LINE#         26
+  -------         ENDPROC       SEG
+  -------         PROC          MAIN
+  C:00F8H         LINE#         28
+  C:00F8H         LINE#         29
+  C:00F8H         LINE#         30
+  C:00FBH         LINE#         31
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/14/2026  17:23:10  PAGE 3
+
+
+  -------         MODULE        MAINPRO
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:00FDH         PUBLIC        main
+  C:00C1H         PUBLIC        seg
+  C:00E9H         PUBLIC        Delay
+  D:0012H         PUBLIC        s
+  -------         PROC          DELAY
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  D:0005H         SYMBOL        k
+  -------         ENDDO         
+  C:00E9H         LINE#         6
+  C:00E9H         LINE#         8
+  C:00EAH         LINE#         9
+  C:00EBH         LINE#         10
+  C:00EDH         LINE#         11
+  C:00EFH         LINE#         12
+  C:00F1H         LINE#         13
+  C:00F1H         LINE#         14
+  C:00F1H         LINE#         15
+  C:00F3H         LINE#         16
+  C:00F5H         LINE#         17
+  C:00F7H         LINE#         18
+  -------         ENDPROC       DELAY
+  -------         PROC          SEG
+  -------         DO            
+  D:0002H         SYMBOL        i
+  -------         ENDDO         
+  C:00C1H         LINE#         20
+  C:00C1H         LINE#         22
+  C:00C4H         LINE#         23
+  C:00CBH         LINE#         24
+  C:00CEH         LINE#         25
+  C:00D9H         LINE#         26
+  -------         ENDPROC       SEG
+  -------         PROC          MAIN
+  C:00FDH         LINE#         28
+  C:00FDH         LINE#         29
+  C:00FDH         LINE#         30
+  C:0100H         LINE#         31
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAINPRO
+
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  S
+    MODULE:  .\Objects\mainpro.obj (MAINPRO)
+
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MAIN
+    MODULE:  .\Objects\mainpro.obj (MAINPRO)
+
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  SEG
+    MODULE:  .\Objects\mainpro.obj (MAINPRO)
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/14/2026  17:23:10  PAGE 4
+
+
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  DELAY
+    MODULE:  .\Objects\mainpro.obj (MAINPRO)
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MAIN?MAINPRO
+
+*** ERROR L118: REFERENCE MADE TO ERRONEOUS EXTERNAL
+    SYMBOL:  MAIN
+    MODULE:  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+    ADDRESS: 0010H
+
+Program Size: data=29.0 xdata=0 code=258
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  5 ERROR(S)
