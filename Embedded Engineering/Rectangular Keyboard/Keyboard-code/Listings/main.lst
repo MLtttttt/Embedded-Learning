@@ -1,0 +1,165 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              02/15/2026 18:57:48 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "reg51.h"
+   2          #include <intrins.h>
+   3          
+   4          unsigned char code s[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,
+   5                                    0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71};
+   6          
+   7          // ????(4?,??0~15)
+   8          unsigned char code password[4] = {1,2,3,4};  // ???? 1 2 3 4
+   9          
+  10          // ?????
+  11          unsigned char input[4];
+  12          unsigned char count = 0;      // ?????
+  13          
+  14          sbit LED = P3^0;              // LED?P3.0,?????
+  15          
+  16          void delay(void) {
+  17   1          unsigned char i, j;
+  18   1          i = 108;
+  19   1          j = 145;
+  20   1          do {
+  21   2              while (--j);
+  22   2          } while (--i);
+  23   1      }
+  24          
+  25          // ???500ms(??LED??)
+  26          void delay500ms() {
+  27   1          unsigned char i, j, k;
+  28   1          for (k = 0; k < 50; k++) {
+  29   2              i = 108; j = 145;
+  30   2              do { while (--j); } while (--i);
+  31   2          }
+  32   1      }
+  33          
+  34          // ??????(????,??0~15?16)
+  35          unsigned char scan(void) {
+  36   1          // ??0? (P1.0=0)
+  37   1          P1 = 0xFE;
+  38   1          if ((P1 & 0xF0) != 0xF0) {
+  39   2              delay();
+  40   2              if ((P1 & 0xF0) != 0xF0) {
+  41   3                  if ((P1 & 0xE0) == 0xE0) return 0;
+  42   3                  if ((P1 & 0xD0) == 0xD0) return 1;
+  43   3                  if ((P1 & 0xB0) == 0xB0) return 2;
+  44   3                  if ((P1 & 0x70) == 0x70) return 3;
+  45   3              }
+  46   2          }
+  47   1      
+  48   1          // ??1? (P1.1=0)
+  49   1          P1 = 0xFD;
+  50   1          if ((P1 & 0xF0) != 0xF0) {
+  51   2              delay();
+  52   2              if ((P1 & 0xF0) != 0xF0) {
+  53   3                  if ((P1 & 0xE0) == 0xE0) return 4;
+  54   3                  if ((P1 & 0xD0) == 0xD0) return 5;
+C51 COMPILER V9.60.7.0   MAIN                                                              02/15/2026 18:57:48 PAGE 2   
+
+  55   3                  if ((P1 & 0xB0) == 0xB0) return 6;
+  56   3                  if ((P1 & 0x70) == 0x70) return 7;
+  57   3              }
+  58   2          }
+  59   1      
+  60   1          // ??2? (P1.2=0)
+  61   1          P1 = 0xFB;
+  62   1          if ((P1 & 0xF0) != 0xF0) {
+  63   2              delay();
+  64   2              if ((P1 & 0xF0) != 0xF0) {
+  65   3                  if ((P1 & 0xE0) == 0xE0) return 8;
+  66   3                  if ((P1 & 0xD0) == 0xD0) return 9;
+  67   3                  if ((P1 & 0xB0) == 0xB0) return 10;  // A
+  68   3                  if ((P1 & 0x70) == 0x70) return 11;  // b
+  69   3              }
+  70   2          }
+  71   1      
+  72   1          // ??3? (P1.3=0)
+  73   1          P1 = 0xF7;
+  74   1          if ((P1 & 0xF0) != 0xF0) {
+  75   2              delay();
+  76   2              if ((P1 & 0xF0) != 0xF0) {
+  77   3                  if ((P1 & 0xE0) == 0xE0) return 12;  // C
+  78   3                  if ((P1 & 0xD0) == 0xD0) return 13;  // d
+  79   3                  if ((P1 & 0xB0) == 0xB0) return 14;  // E
+  80   3                  if ((P1 & 0x70) == 0x70) return 15;  // F
+  81   3              }
+  82   2          }
+  83   1      
+  84   1          // ??????(?????????????)
+  85   1          // ?????????
+  86   1          return 16;
+  87   1      }
+  88          
+  89          void main(void) {
+  90   1          unsigned char key;
+  91   1          unsigned char i;
+  92   1      
+  93   1          LED = 1;          // ??LED??
+  94   1          P2 = 0x00;        // ?????
+  95   1      
+  96   1          while (1) {
+  97   2              key = scan();
+  98   2      
+  99   2              if (key < 16) {               // ???
+ 100   3                  if (key == 15) {           // ??F????
+ 101   4                      count = 0;
+ 102   4                      LED = 1;
+ 103   4                      P2 = 0x00;
+ 104   4                      continue;
+ 105   4                  }
+ 106   3      
+ 107   3                  if (count < 4) {
+ 108   4                      input[count] = key;           // ????
+ 109   4                      P2 = s[key];                   // ??????
+ 110   4                      // ?????????????(?500ms)
+ 111   4                      delay500ms();
+ 112   4                      P2 = 0x00;                      // ??,?????
+ 113   4                      count++;
+ 114   4                  }
+ 115   3      
+ 116   3                  if (count == 4) {                   // ???4?
+C51 COMPILER V9.60.7.0   MAIN                                                              02/15/2026 18:57:48 PAGE 3   
+
+ 117   4                      // ????
+ 118   4                      for (i = 0; i < 4; i++) {
+ 119   5                          if (input[i] != password[i]) break;
+ 120   5                      }
+ 121   4                      if (i == 4) {                    // ????
+ 122   5                          LED = 0;                      // ??LED
+ 123   5                      } else {
+ 124   5                          // ????:LED??3?
+ 125   5                          for (i = 0; i < 3; i++) {
+ 126   6                              LED = 0;
+ 127   6                              delay500ms();
+ 128   6                              LED = 1;
+ 129   6                              delay500ms();
+ 130   6                          }
+ 131   5                      }
+ 132   4                      // ????,?????
+ 133   4                      count = 0;
+ 134   4                  }
+ 135   3              }
+ 136   2          }
+ 137   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    399    ----
+   CONSTANT SIZE    =     20    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
