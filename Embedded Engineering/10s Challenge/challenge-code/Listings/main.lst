@@ -1,0 +1,184 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              03/02/2026 17:24:55 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include <string.h>
+   3          #include "Timer0.h" 
+   4          #include "Delay.h"   
+   5          #include "UART.h" 
+   6          
+   7          typedef unsigned char u8;
+   8          typedef unsigned int u16;
+   9          typedef unsigned long u32;
+  10          
+  11          sbit Key_start = P3^2;  
+  12          sbit Key_clear = P3^3;  
+  13          
+  14          
+  15          sbit LED1 = P1^0;
+  16          sbit LED2 = P1^1;
+  17          sbit LED3 = P1^2;
+  18          
+  19          // 数码管段码表（共阳极，0~9及横线）
+  20          u8 seg[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0xbf};
+  21          
+  22          // 数码管位选码（高电平有效）
+  23          u8 wei[]={0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
+  24          
+  25          // 显示缓冲区
+  26          u8 buf[]={0,0,10,0,0,10,0,0};
+  27          
+  28          
+  29          u8 min, sec;       // 分钟、秒
+  30          u16 msec;          // 毫秒（0~999）
+  31          u8 dig_index;      // 数码管动态扫描当前位索引
+  32          u8 LED_count = 0;  // 用于记录LED亮灯数量，供串口评级使用
+  33          
+  34          bit flag;          // 计时标志：1运行，0暂停
+  35          
+  36          /**
+  37           * 更新显示缓冲区函数
+  38           * 根据当前的min、sec、msec计算并填充buf数组
+  39           */
+  40          void Update_buf(void) {
+  41   1          u16 temp_ms = msec / 10;// 取毫秒的十位和个位（0~99）
+  42   1          buf[0] = min / 10;
+  43   1          buf[1] = min % 10;
+  44   1          buf[3] = sec / 10;
+  45   1          buf[4] = sec % 10;
+  46   1          buf[6] = temp_ms / 10;
+  47   1          buf[7] = temp_ms % 10;
+  48   1          // buf[2]和buf[5]固定为10（横线），无需更新
+  49   1      }
+  50          
+  51          /**
+  52           * 成绩判断及LED控制函数
+  53           * 根据当前总时间来决定LED亮灭状态，并记录亮灯数量
+  54           */
+C51 COMPILER V9.60.7.0   MAIN                                                              03/02/2026 17:24:55 PAGE 2   
+
+  55          void Judge_LED(void) {
+  56   1          u32 total_time = (u32)min * 60 * 1000 + (u32)sec * 1000 + msec; // 总毫秒数
+  57   1          u32 t = total_time / 10; // 转换为厘秒（0.01秒为单位）提高可读性
+  58   1      
+  59   1          if(t >= 950 && t <= 1050) { // 9.50~10.50秒
+  60   2              LED1 = 1, LED2 = 0, LED3 = 0;  
+  61   2              LED_count = 1; // 记录亮灯数
+  62   2          }
+  63   1          else if(t >= 850 && t < 950) {// 8.50~9.50秒
+  64   2              LED1 = 1, LED2 = 1, LED3 = 0; 
+  65   2              LED_count = 2;
+  66   2          }
+  67   1          else if(t>=750 && t < 850) {// 7.50~8.50秒
+  68   2              LED1 = 1, LED2 = 1, LED3 = 1;
+  69   2              LED_count = 3;
+  70   2          }
+  71   1      }
+  72          
+  73          
+  74          /**
+  75           * 按键扫描函数（阻塞式）
+  76           * 检测启动/暂停键和清零键，带消抖和等待释放
+  77           */
+  78          void Key_Scan(void) {
+  79   1          // 启动/暂停键处理
+  80   1          if( Key_start == 0) {     
+  81   2              Delay10ms();                  
+  82   2              if(Key_start == 0) {             
+  83   3                  flag = !flag;                 
+  84   3                  if(flag == 0) {               
+  85   4                      Judge_LED();// 成绩判断，点亮LED
+  86   4                      Uart_result();// 串口发送当前时间
+  87   4                      Send_grade(LED_count);// 串口发送评级
+  88   4                      Uart_Send('\r');// 发送回车
+  89   4                      Uart_Send('\n');// 发送换行
+  90   4                  }
+  91   3                  while(Key_start == 0);
+  92   3              }
+  93   2          }
+  94   1          
+  95   1          // 清零键处理
+  96   1          else if(Key_clear == 0) { 
+  97   2              Delay10ms();
+  98   2              if(Key_clear == 0) {
+  99   3                  flag = 0; 
+ 100   3                  min = 0, sec = 0, msec = 0;     // 计时归零
+ 101   3                  LED1 = 0, LED2 = 0, LED3 = 0;  
+ 102   3                  while(Key_clear == 0);
+ 103   3              }
+ 104   2          }
+ 105   1      }
+ 106          
+ 107          /**
+ 108           * 主函数
+ 109           */
+ 110          void main(void) {
+ 111   1      
+ 112   1          P1 = 0x00;
+ 113   1          P2 = 0x00;
+ 114   1          min = 0, sec = 0, msec = 0;
+ 115   1          flag = 0;
+ 116   1          dig_index = 0;
+C51 COMPILER V9.60.7.0   MAIN                                                              03/02/2026 17:24:55 PAGE 3   
+
+ 117   1      
+ 118   1          Uart_Init();      // 串口初始化
+ 119   1          Timer0_init();    // 定时器0初始化（1ms中断）
+ 120   1          Update_buf();     // 更新显示缓冲区
+ 121   1      
+ 122   1          while(1) {
+ 123   2              Key_Scan();   // 循环扫描按键
+ 124   2          }
+ 125   1      }
+ 126          
+ 127          /**
+ 128           * 定时器0中断服务函数（1ms一次）
+ 129           * 负责数码管动态扫描和计时更新
+ 130           */
+ 131          void Timer0_isr(void) interrupt 1 {
+ 132   1          TH0 = 0xFC;       // 11.0592MHz 1ms
+ 133   1          TL0 = 0x66;
+ 134   1      
+ 135   1          // 数码管动态扫描（每次中断显示一位）
+ 136   1          P2 = 0x00;                        // 消隐，关闭所有位选
+ 137   1          P0 = seg[buf[dig_index]];         // 送当前位的段码
+ 138   1          P2 = wei[dig_index];              // 送当前位的位选
+ 139   1          dig_index = (dig_index + 1) % 8;  // 指向下一位
+ 140   1      
+ 141   1          // 计时处理（仅在flag为1时累加）
+ 142   1          if(flag) {
+ 143   2              msec++;
+ 144   2              if(msec >= 1000) {            // 满1000ms进1秒
+ 145   3                  msec = 0;
+ 146   3                  sec++;
+ 147   3                  if(sec >= 60) {           // 满60秒进1分钟
+ 148   4                      sec = 0;
+ 149   4                      min++;
+ 150   4                      if(min >= 60) min = 0; // 分钟封顶60
+ 151   4                  }
+ 152   3              }
+ 153   2          }
+ 154   1          
+ 155   1          Update_buf();   // 每次中断更新缓冲区，保证显示实时
+ 156   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    518    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     33       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
